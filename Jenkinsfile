@@ -1,6 +1,6 @@
 pipeline {
 
-  agent { label 'addk8s' }
+  agent { label '2021' }
 
   stages {
 
