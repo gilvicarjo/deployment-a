@@ -6,7 +6,6 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        sh "echo vai"
         git url:'https://github.com/gilvicarjo/deployment-a.git', branch:'master'
       }
     }
