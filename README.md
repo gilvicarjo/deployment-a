@@ -11,8 +11,4 @@
 - After finish a common Jenkins setup, you will just need to switch on .kube/config the .crt and .key by their base64 encoded data to link Jenkins with you K8s Cluster when configuring Jenkins Clouds.
 
 ### Take a Look at the Jenkins Container Logs 
-<<<<<<< HEAD
 > docker logs -f jenkins
-=======
-> docker logs -f jenkins 
->>>>>>> 3a96f9b (branch stage)
