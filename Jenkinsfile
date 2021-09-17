@@ -6,7 +6,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/gilvicarjo/deployment-a.git', branch:'stage'
+        git url:'https://github.com/gilvicarjo/deployment-a.git', branch:'master'
       }
     }
 
