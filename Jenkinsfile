@@ -13,7 +13,7 @@ pipeline {
     stage('Deploy Service A') {
       steps {
         script {
-          kubernetesDeploy(configs: "deploymenta.yaml", kubeconfigId: "5")
+          kubernetesDeploy(configs: "deploymenta.yaml", kubeconfigId: "config-jenkins (5)")
         }
       }
     }
