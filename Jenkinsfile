@@ -1,7 +1,5 @@
 pipeline {
 
-  agent { label '2021' }
-
   stages {
 
     stage('Checkout Source') {
