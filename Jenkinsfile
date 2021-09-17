@@ -1,12 +1,12 @@
 pipeline {
 
-  agent { label 'kubepod' }
+  agent { label 'add' }
 
   stages {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/gilvicarjo/deployment-a.git', branch:'master'
+        git url:'https://github.com/gilvicarjo/deployment-a.git', branch:'stage'
       }
     }
 

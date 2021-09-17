@@ -12,3 +12,5 @@
 
 ### Take a Look at the Jenkins Container Logs 
 > docker logs -f jenkins
+
+### Now Update Just Stage Branch
