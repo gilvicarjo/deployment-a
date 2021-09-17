@@ -13,5 +13,5 @@
 ### Take a Look at the Jenkins Container Logs 
 > docker logs -f jenkins
 
-### To publish the repo in Githug.com
+### To publish the repo in Github.com
 > 
