@@ -1,3 +1,7 @@
+pipeline {
+
+  agent { label 'challenge' }
+
   stages {
 
     stage('Checkout Source') {
@@ -15,3 +19,5 @@
     }
 
   }
+
+}
