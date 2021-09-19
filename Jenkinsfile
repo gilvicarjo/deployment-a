@@ -1,42 +1,18 @@
 pipeline {
-
-  agent { label 'challenge' }
-
-  stages {
-    stage('Docker Build') {
-      steps {
-        sh "docker build -t gilvicarjo/servicea:${env.BUILD_NUMBER} ."
-      }
+    agent {
+        // Define agent details here
     }
-    stage('Docker Push') {
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'RqzjKxxTG9Rd3X6', usernameVariable: 'gilvicarjo')]) {
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push gilvicarjo/servicea:${env.BUILD_NUMBER}"
+    environment {
+        // The MY_KUBECONFIG environment variable will be assigned
+        // the value of a temporary file.  For example:
+        //   /home/user/.jenkins/workspace/cred_test@tmp/secretFiles/546a5cf3-9b56-4165-a0fd-19e2afe6b31f/kubeconfig.txt
+        MY_KUBECONFIG = credentials('config-jenkins')
+    }
+    stages {
+        stage('Get Pods') {
+            steps {
+                sh("kubectl --kubeconfig $MY_KUBECONFIG get pods")
+            }
         }
-      }
     }
-    stage('Docker Remove Image') {
-      steps {
-        sh "docker rmi gilvicarjo/servicea:${env.BUILD_NUMBER}"
-      }
-    }
-    stage('Apply Kubernetes Files') {
-      steps {
-          withKubeConfig([credentialsId: '2']) {
-          sh 'cat deploymenta.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
-          sh 'kubectl apply -f service.yaml'
-        }
-      }
-  }
-}
-post {
-    success {
-      slackSend(message: "Pipeline is successfully completed.")
-    }
-    failure {
-      slackSend(message: "Pipeline failed. Please check the logs.")
-    }
-}
-
 }
