@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        // Define agent details here
+        label 'challenge'
     }
     environment {
         // The MY_KUBECONFIG environment variable will be assigned
