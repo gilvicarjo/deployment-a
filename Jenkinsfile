@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Get Pods') {
             steps {
-                sh("kubectl --kubeconfig $MY_KUBECONFIG get pods")
+                sh("kubectl --kubeconfig $MY_KUBECONFIG get pods -A")
             }
         }
     }
